@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Main.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">email</a> &gt; <a href="index.source.html" class="el_package">com.getordecorreo</a> &gt; <span class="el_source">Main.java</span></div><h1>Main.java</h1><pre class="source lang-java linenums">package com.getordecorreo;
+
+import java.util.Scanner;
+import java.util.List;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
+
+<span class="nc" id="L12">public class Main {</span>
+    public static void main(String[] args) {
+<span class="nc" id="L14">        SistemaDeCorreo sistema = new SistemaDeCorreo();</span>
+<span class="nc" id="L15">        FiltroSpam filtroSpam = new FiltroSpam(); // Crear una instancia de FiltroSpam</span>
+
+        // Crear usuarios preexistentes 
+<span class="nc" id="L18">        Usuario usuario1 = new Usuario(&quot;Luffy&quot;, &quot;Lucas&quot;, &quot;Caamano&quot;, &quot;LucasCaa@gmail.com&quot;);</span>
+<span class="nc" id="L19">        Usuario usuario2 = new Usuario(&quot;JuliaJo&quot;, &quot;Julia&quot;, &quot;Johnson&quot;, &quot;Julia@gmail.com&quot;);</span>
+<span class="nc" id="L20">        Usuario usuario3 = new Usuario(&quot;Pedrito&quot;, &quot;Pedro&quot;, &quot;Benitez&quot;, &quot;PedroB@gmail.com&quot;);</span>
+<span class="nc" id="L21">        Usuario usuario4 = new Usuario(&quot;Mercado Libre&quot;, &quot;Mercado Libre&quot;, &quot; &quot;, &quot;MercadoLibre@gmail.com&quot;);</span>
+<span class="nc" id="L22">        Usuario usuario5 = new Usuario(&quot;UCP&quot;, &quot;Cuenca del Plata&quot;, &quot; &quot;, &quot;@ucp.edu.ar&quot;);</span>
+
+
+        // Agregar usuarios al sistema
+<span class="nc" id="L26">        sistema.agregarUsuario(usuario1);</span>
+<span class="nc" id="L27">        sistema.agregarUsuario(usuario2);</span>
+<span class="nc" id="L28">        sistema.agregarUsuario(usuario3);</span>
+<span class="nc" id="L29">        sistema.agregarUsuario(usuario4);</span>
+<span class="nc" id="L30">        sistema.agregarUsuario(usuario5);</span>
+
+<span class="nc" id="L32">        Scanner scanner = new Scanner(System.in);</span>
+<span class="nc" id="L33">         while (true) {</span>
+<span class="nc" id="L34">            System.out.println(&quot;Bienvenido al Sistema de Correo&quot;);</span>
+<span class="nc" id="L35">            System.out.println(&quot;                               &quot;);</span>
+<span class="nc" id="L36">            System.out.println(&quot;1. Iniciar sesión como Luffy&quot;);</span>
+<span class="nc" id="L37">            System.out.println(&quot;                               &quot;);</span>
+<span class="nc" id="L38">            System.out.println(&quot;2. Iniciar sesión como JualiaJo&quot;);</span>
+<span class="nc" id="L39">            System.out.println(&quot;                               &quot;);</span>
+<span class="nc" id="L40">            System.out.println(&quot;3. Iniciar sesión como UCP&quot;);</span>
+<span class="nc" id="L41">            System.out.println(&quot;                               &quot;);</span>
+<span class="nc" id="L42">            System.out.println(&quot;4. Iniciar sesión como Mercado Libre&quot;);</span>
+<span class="nc" id="L43">            System.out.println(&quot;                               &quot;);</span>
+<span class="nc" id="L44">            System.out.println(&quot;5. Iniciar sesión como Pedrito&quot;);</span>
+<span class="nc" id="L45">            System.out.println(&quot;6. Salir&quot;);</span>
+<span class="nc" id="L46">            System.out.print(&quot;Seleccione una opción: &quot;);</span>
+<span class="nc" id="L47">            int opcion = scanner.nextInt();</span>
+<span class="nc" id="L48">            scanner.nextLine();</span>
+
+<span class="nc" id="L50">            Usuario usuarioActivo = null;</span>
+
+<span class="nc bnc" id="L52" title="All 7 branches missed.">            switch (opcion) {</span>
+                case 1:
+<span class="nc" id="L54">                    usuarioActivo = sistema.iniciarSesion(&quot;Luffy&quot;);</span>
+<span class="nc" id="L55">                    break;</span>
+                case 2:
+<span class="nc" id="L57">                    usuarioActivo = sistema.iniciarSesion(&quot;JuliaJo&quot;);</span>
+<span class="nc" id="L58">                    break;</span>
+                case 3:
+<span class="nc" id="L60">                    usuarioActivo = sistema.iniciarSesion(&quot;UCP&quot;);</span>
+<span class="nc" id="L61">                    break;</span>
+                case 4:
+<span class="nc" id="L63">                    usuarioActivo = sistema.iniciarSesion(&quot;Mercado Libre&quot;);</span>
+<span class="nc" id="L64">                    break;</span>
+                case 5:
+<span class="nc" id="L66">                    usuarioActivo = sistema.iniciarSesion(&quot;Pedrito&quot;);</span>
+<span class="nc" id="L67">                    break;</span>
+                case 6:
+<span class="nc" id="L69">                    System.out.println(&quot;Saliendo del Sistema de Correo.&quot;);</span>
+<span class="nc" id="L70">                    scanner.close();</span>
+<span class="nc" id="L71">                    System.exit(0);</span>
+                default:
+<span class="nc" id="L73">                    System.out.println(&quot;Opción no válida.&quot;);</span>
+            }
+
+<span class="nc bnc" id="L76" title="All 2 branches missed.">            if (usuarioActivo != null) {</span>
+<span class="nc" id="L77">                System.out.println(&quot;                                            &quot;);</span>
+<span class="nc" id="L78">                System.out.println(&quot;Inicio de sesión exitoso como &quot; + usuarioActivo.getUsername() + &quot;.&quot;);</span>
+
+                while (true) {
+<span class="nc" id="L81">                    System.out.println(&quot;                               &quot;);</span>
+<span class="nc" id="L82">                    System.out.println(&quot;Menú de &quot; + usuarioActivo.getUsername() + &quot;:&quot;);</span>
+<span class="nc" id="L83">                    System.out.println(&quot;1. Enviar correo&quot;);</span>
+<span class="nc" id="L84">                    System.out.println(&quot;2. Ver bandeja de entrada&quot;);</span>
+<span class="nc" id="L85">                    System.out.println(&quot;3. Ver bandeja de salida&quot;);</span>
+<span class="nc" id="L86">                    System.out.println(&quot;4. Filtrar correos por asunto o por palabra clave&quot;);</span>
+<span class="nc" id="L87">                    System.out.println(&quot;5. Filtrar correos por remitente&quot;);</span>
+<span class="nc" id="L88">                    System.out.println(&quot;6. Filtrar correos por fecha&quot;);</span>
+<span class="nc" id="L89">                    System.out.println(&quot;7. Filtrar correos por Prioridad UCP&quot;);</span>
+<span class="nc" id="L90">                    System.out.println(&quot;8. Filtrar correos por Spam&quot;);</span>
+<span class="nc" id="L91">                    System.out.println(&quot;9. Cerrar sesión&quot;);</span>
+<span class="nc" id="L92">                    System.out.print(&quot;Seleccione una opción: &quot;);</span>
+<span class="nc" id="L93">                    int opcionUsuario = scanner.nextInt();</span>
+<span class="nc" id="L94">                    scanner.nextLine();</span>
+
+<span class="nc bnc" id="L96" title="All 10 branches missed.">                    switch (opcionUsuario) {</span>
+                            case 1:
+<span class="nc" id="L98">                                System.out.println(&quot;Contactos disponibles:&quot;);</span>
+<span class="nc" id="L99">                                System.out.println(&quot;-------------------------&quot;);</span>
+<span class="nc" id="L100">                                System.out.println(&quot;-------------------------&quot;);</span>
+                                
+                                // Obtener la lista de usuarios en el orden en que se agregaron
+<span class="nc" id="L103">                                List&lt;Usuario&gt; usuariosDisponibles = sistema.getUsuarios();</span>
+
+                                // Ordenar la lista alfabéticamente por nombre
+<span class="nc" id="L106">                                Collections.sort(usuariosDisponibles, new Comparator&lt;Usuario&gt;() {</span>
+                                    public int compare(Usuario usuario1, Usuario usuario2) {
+<span class="nc" id="L108">                                        return usuario1.getNombre().compareTo(usuario2.getNombre());</span>
+                                    }
+                                });
+
+                                // Mostrar los contactos en orden alfabético y enumerarlos manualmente
+<span class="nc bnc" id="L113" title="All 2 branches missed.">                                for (int i = 0; i &lt; usuariosDisponibles.size(); i++) {</span>
+<span class="nc" id="L114">                                    Usuario destinatario = usuariosDisponibles.get(i);</span>
+<span class="nc bnc" id="L115" title="All 2 branches missed.">                                    if (!destinatario.getUsername().equals(usuarioActivo.getUsername())) {</span>
+<span class="nc" id="L116">                                        int numero = i + 1;</span>
+<span class="nc" id="L117">                                        System.out.println(numero + &quot;. &quot; + destinatario.getNombre() + &quot; &quot; + destinatario.getApellido() + &quot; &quot; + &quot;(&quot; + destinatario.getUsername() + &quot;)&quot; + &quot; &quot; + destinatario.getCorreoElectronico());</span>
+                                    }
+                                }
+
+<span class="nc" id="L121">                                System.out.println(&quot;-------------------------&quot;);</span>
+<span class="nc" id="L122">                                System.out.print(&quot;Seleccione uno o más destinatarios por número (separados por comas): &quot;);</span>
+<span class="nc" id="L123">                                String numerosDestinatarios = scanner.nextLine();</span>
+<span class="nc" id="L124">                                String[] numerosDestinatariosArray = numerosDestinatarios.split(&quot;,&quot;);</span>
+<span class="nc" id="L125">                                List&lt;Usuario&gt; destinatarios = new ArrayList&lt;&gt;();</span>
+<span class="nc bnc" id="L126" title="All 2 branches missed.">                                for (String numero : numerosDestinatariosArray) {</span>
+<span class="nc" id="L127">                                    int num = Integer.parseInt(numero.trim());</span>
+<span class="nc bnc" id="L128" title="All 4 branches missed.">                                    if (num &gt;= 1 &amp;&amp; num &lt;= usuariosDisponibles.size()) {</span>
+<span class="nc" id="L129">                                        Usuario destinatario = usuariosDisponibles.get(num - 1);</span>
+<span class="nc bnc" id="L130" title="All 2 branches missed.">                                        if (!destinatario.getUsername().equals(usuarioActivo.getUsername())) {</span>
+<span class="nc" id="L131">                                            destinatarios.add(destinatario);</span>
+<span class="nc" id="L132">                                        } else {</span>
+<span class="nc" id="L133">                                            System.out.println(&quot;No puedes enviarte un correo a ti mismo.&quot;);</span>
+                                        }
+                                    }
+                                }
+
+<span class="nc bnc" id="L138" title="All 2 branches missed.">                                if (!destinatarios.isEmpty()) {</span>
+<span class="nc" id="L139">                                    System.out.print(&quot;Asunto: &quot;);</span>
+<span class="nc" id="L140">                                    String asunto = scanner.nextLine();</span>
+<span class="nc" id="L141">                                    System.out.println(&quot;-------------------------&quot;);</span>
+<span class="nc" id="L142">                                    System.out.print(&quot;Contenido: &quot;);</span>
+<span class="nc" id="L143">                                    String contenido = scanner.nextLine();</span>
+<span class="nc" id="L144">                                    System.out.println(&quot;-------------------------&quot;);</span>
+                                    
+                                    // Solicitar al usuario que ingrese la fecha de envío
+<span class="nc" id="L147">                                    Date fechaEnvio = null;</span>
+<span class="nc bnc" id="L148" title="All 2 branches missed.">                                    while (fechaEnvio == null) {</span>
+<span class="nc" id="L149">                                        System.out.print(&quot;Ingrese la fecha de envío (dd/MM/yyyy): &quot;);</span>
+<span class="nc" id="L150">                                        String fechaEnvioStr = scanner.nextLine();</span>
+                                        
+                                        try {
+<span class="nc" id="L153">                                            SimpleDateFormat dateFormat = new SimpleDateFormat(&quot;dd/MM/yyyy&quot;);</span>
+<span class="nc" id="L154">                                            fechaEnvio = dateFormat.parse(fechaEnvioStr);</span>
+<span class="nc" id="L155">                                        } catch (ParseException e) {</span>
+<span class="nc" id="L156">                                            System.out.println(&quot;Formato de fecha inválido. Use el formato dd/MM/yyyy.&quot;);</span>
+                                        }
+                                    }
+
+<span class="nc" id="L160">                                    usuarioActivo.enviarCorreo(destinatarios, asunto, contenido, fechaEnvio);</span>
+<span class="nc" id="L161">                                    System.out.println(&quot;Correo enviado.&quot;);</span>
+<span class="nc" id="L162">                                } else {</span>
+<span class="nc" id="L163">                                    System.out.println(&quot;Números de destinatario no válidos.&quot;);</span>
+                                }
+<span class="nc" id="L165">                                break;</span>
+                            case 2:
+<span class="nc" id="L167">                                System.out.println(&quot;Bandeja de entrada:&quot;);</span>
+<span class="nc" id="L168">                                List&lt;Correo&gt; bandejaEntrada = usuarioActivo.getBandejaDeEntrada();</span>
+<span class="nc bnc" id="L169" title="All 2 branches missed.">                                for (int i = 0; i &lt; bandejaEntrada.size(); i++) {</span>
+<span class="nc" id="L170">                                    Correo correo = bandejaEntrada.get(i);</span>
+                                    
+                                    // Mostrar información del remitente
+<span class="nc" id="L173">                                    Usuario remitente = correo.getRemitente();</span>
+<span class="nc" id="L174">                                    System.out.println(&quot;De: &quot; + remitente.getUsername() + &quot; &quot; + remitente.getNombre() + &quot; &quot; + remitente.getApellido() + &quot; &quot; + remitente.getCorreoElectronico());</span>
+                            
+<span class="nc" id="L176">                                    System.out.println(&quot;Asunto: &quot; + correo.getAsunto());</span>
+<span class="nc" id="L177">                                    System.out.println(&quot;Contenido: &quot; + correo.getContenido());</span>
+<span class="nc" id="L178">                                    System.out.println(&quot;Fecha: &quot; + correo.getFechaEnvio());</span>
+<span class="nc" id="L179">                                    System.out.println(&quot;-------------------------&quot;);</span>
+                                }
+<span class="nc" id="L181">                                break;</span>
+                            
+                            case 3:
+<span class="nc" id="L184">                                System.out.println(&quot;Bandeja de salida:&quot;);</span>
+<span class="nc" id="L185">                                List&lt;Correo&gt; bandejaSalida = usuarioActivo.getBandejaDeEnviados();</span>
+<span class="nc bnc" id="L186" title="All 2 branches missed.">                                for (int i = 0; i &lt; bandejaSalida.size(); i++) {</span>
+<span class="nc" id="L187">                                    Correo correo = bandejaSalida.get(i);</span>
+                                    
+                                    // Mostrar información de los destinatarios
+<span class="nc" id="L190">                                    System.out.println(&quot;Para:&quot;);</span>
+<span class="nc bnc" id="L191" title="All 2 branches missed.">                                    for (Contacto destinatario : correo.getDestinatarios()) {</span>
+<span class="nc" id="L192">                                        System.out.println(destinatario.getUsername() + &quot; &quot; + destinatario.getNombre() + &quot; &quot; + destinatario.getApellido() + &quot; &quot; + destinatario.getCorreoElectronico());</span>
+                                    }
+                            
+<span class="nc" id="L195">                                    System.out.println(&quot;Asunto: &quot; + correo.getAsunto());</span>
+<span class="nc" id="L196">                                    System.out.println(&quot;Contenido: &quot; + correo.getContenido());</span>
+<span class="nc" id="L197">                                    System.out.println(&quot;Fecha: &quot; + correo.getFechaEnvio());</span>
+<span class="nc" id="L198">                                    System.out.println(&quot;-------------------------&quot;);</span>
+                                }
+<span class="nc" id="L200">                                break;</span>
+                            case 4:
+<span class="nc" id="L202">                            System.out.println(&quot;Filtrar correos por asunto o palabra clave:&quot;);</span>
+<span class="nc" id="L203">                            System.out.print(&quot;Ingrese el criterio de búsqueda (asunto o palabra clave): &quot;);</span>
+<span class="nc" id="L204">                            String criterioBusqueda = scanner.nextLine();</span>
+                        
+                            // Aplicar el filtro de asunto o palabra clave
+<span class="nc" id="L207">                            FiltroAsuntoPalabraClave filtro = new FiltroAsuntoPalabraClave(criterioBusqueda);</span>
+<span class="nc" id="L208">                            List&lt;Correo&gt; correosFiltrados = filtro.aplicarFiltro(usuarioActivo.getBandejaDeEntrada());</span>
+                        
+<span class="nc bnc" id="L210" title="All 2 branches missed.">                            if (!correosFiltrados.isEmpty()) {</span>
+<span class="nc" id="L211">                                System.out.println(&quot;Correos que coinciden con el criterio de búsqueda:&quot;);</span>
+<span class="nc bnc" id="L212" title="All 2 branches missed.">                                for (Correo correo : correosFiltrados) {</span>
+<span class="nc" id="L213">                                    System.out.println(&quot;De: &quot; + correo.getRemitente().getUsername() + &quot; &quot; + correo.getRemitente().getNombre() + &quot; &quot; + correo.getRemitente().getApellido() + &quot; &quot; + correo.getRemitente().getCorreoElectronico());</span>
+<span class="nc" id="L214">                                    System.out.println(&quot;Asunto: &quot; + correo.getAsunto());</span>
+<span class="nc" id="L215">                                    System.out.println(&quot;Contenido: &quot; + correo.getContenido());</span>
+<span class="nc" id="L216">                                    System.out.println(&quot;Fecha: &quot; + correo.getFechaEnvio());</span>
+<span class="nc" id="L217">                                    System.out.println(&quot;-------------------------&quot;);</span>
+                                }
+<span class="nc" id="L219">                            } else {</span>
+<span class="nc" id="L220">                                System.out.println(&quot;No se encontraron correos que coincidan con el criterio de búsqueda.&quot;);</span>
+                            }
+<span class="nc" id="L222">                            break;</span>
+                        case 5:
+<span class="nc" id="L224">                            System.out.print(&quot;Ingrese el valor de búsqueda (nombre, apellido, usuario o correo del remitente): &quot;);</span>
+<span class="nc" id="L225">                            String valorBusqueda = scanner.nextLine().toLowerCase(); // Convertir a minúsculas para hacer coincidencias insensibles a mayúsculas y minúsculas</span>
+                            
+<span class="nc" id="L227">                            List&lt;Correo&gt; correosFiltradosPorRemitente = new ArrayList&lt;&gt;();</span>
+                        
+<span class="nc bnc" id="L229" title="All 2 branches missed.">                            for (Correo correo : usuarioActivo.getBandejaDeEntrada()) {</span>
+                                // Verificar si el valor de búsqueda coincide con el correo electrónico, nombre, apellido o usuario del remitente
+<span class="nc" id="L231">                                String remitenteUsuario = correo.getRemitente().getUsername().toLowerCase();</span>
+<span class="nc" id="L232">                                String remitenteCorreo = correo.getRemitente().getCorreoElectronico().toLowerCase();</span>
+<span class="nc" id="L233">                                String remitenteNombre = correo.getRemitente().getNombre().toLowerCase();</span>
+<span class="nc" id="L234">                                String remitenteApellido = correo.getRemitente().getApellido().toLowerCase();</span>
+                        
+<span class="nc bnc" id="L236" title="All 8 branches missed.">                                if (remitenteUsuario.contains(valorBusqueda) || remitenteCorreo.contains(valorBusqueda) || remitenteNombre.contains(valorBusqueda) || remitenteApellido.contains(valorBusqueda)) {</span>
+<span class="nc" id="L237">                                    correosFiltradosPorRemitente.add(correo);</span>
+                                }
+                            }
+                        
+<span class="nc bnc" id="L241" title="All 2 branches missed.">                            if (correosFiltradosPorRemitente.isEmpty()) {</span>
+<span class="nc" id="L242">                                System.out.println(&quot;No se encontraron correos que coincidan con el valor de búsqueda.&quot;);</span>
+<span class="nc" id="L243">                            } else {</span>
+<span class="nc" id="L244">                                System.out.println(&quot;-------------------------&quot;);</span>
+<span class="nc" id="L245">                                System.out.println(&quot;Correos encontrados que coinciden con el valor de búsqueda:&quot;);</span>
+<span class="nc bnc" id="L246" title="All 2 branches missed.">                                for (Correo correoEncontrado : correosFiltradosPorRemitente) {</span>
+<span class="nc" id="L247">                                    System.out.println(&quot;Asunto: &quot; + correoEncontrado.getAsunto());</span>
+<span class="nc" id="L248">                                    System.out.println(&quot;Mensaje: &quot; + correoEncontrado.getContenido());</span>
+<span class="nc" id="L249">                                    System.out.println(&quot;Remitente: &quot; + &quot;Usuario: &quot; + correoEncontrado.getRemitente().getUsername() + &quot; &quot; + &quot;Nombre: &quot; + correoEncontrado.getRemitente().getNombre() + &quot; &quot; + &quot;Apellido: &quot; + correoEncontrado.getRemitente().getApellido() + &quot; &quot; + &quot;Correo: &quot; + correoEncontrado.getRemitente().getCorreoElectronico());</span>
+<span class="nc" id="L250">                                    System.out.println(&quot;Fecha: &quot; + correoEncontrado.getFechaEnvio());</span>
+<span class="nc" id="L251">                                    System.out.println(&quot;------------&quot;);</span>
+                                }
+                            }
+<span class="nc" id="L254">                            break;</span>
+                        case 6:
+<span class="nc" id="L256">                            System.out.println(&quot;Filtrar correos por rango de fecha:&quot;);</span>
+<span class="nc" id="L257">                            System.out.print(&quot;Ingrese la fecha de inicio (en formato dd/MM/yyyy): &quot;);</span>
+<span class="nc" id="L258">                            String fechaInicioStr = scanner.nextLine();</span>
+<span class="nc" id="L259">                            System.out.print(&quot;Ingrese la fecha de fin (en formato dd/MM/yyyy): &quot;);</span>
+<span class="nc" id="L260">                            String fechaFinStr = scanner.nextLine();</span>
+                        
+                            try {
+<span class="nc" id="L263">                                SimpleDateFormat dateFormat = new SimpleDateFormat(&quot;dd/MM/yyyy&quot;);</span>
+<span class="nc" id="L264">                                Date fechaInicio = dateFormat.parse(fechaInicioStr);</span>
+<span class="nc" id="L265">                                Date fechaFin = dateFormat.parse(fechaFinStr);</span>
+                        
+<span class="nc" id="L267">                                FiltroFecha filtroFecha = new FiltroFecha(fechaInicio, fechaFin);</span>
+<span class="nc" id="L268">                                List&lt;Correo&gt; correosFiltradosPorFecha = filtroFecha.aplicarFiltro(usuarioActivo.getBandejaDeEntrada());</span>
+                        
+<span class="nc bnc" id="L270" title="All 2 branches missed.">                                if (!correosFiltradosPorFecha.isEmpty()) {</span>
+<span class="nc" id="L271">                                    System.out.println(&quot;Correos que coinciden con el rango de fecha:&quot;);</span>
+<span class="nc bnc" id="L272" title="All 2 branches missed.">                                    for (Correo correo : correosFiltradosPorFecha) {</span>
+<span class="nc" id="L273">                                        System.out.println(&quot;Asunto: &quot; + correo.getAsunto());</span>
+<span class="nc" id="L274">                                        System.out.println(&quot;Mensaje: &quot; + correo.getContenido());</span>
+<span class="nc" id="L275">                                        System.out.println(&quot;Remitente: &quot; + &quot;Usuario: &quot; + correo.getRemitente().getUsername() + &quot; &quot; + &quot;Nombre: &quot; + correo.getRemitente().getNombre() + &quot; &quot; + &quot;Apellido: &quot; + correo.getRemitente().getApellido() + &quot; &quot; + &quot;Correo: &quot; + correo.getRemitente().getCorreoElectronico());</span>
+<span class="nc" id="L276">                                        System.out.println(&quot;Fecha: &quot; + correo.getFechaEnvio());</span>
+<span class="nc" id="L277">                                        System.out.println(&quot;------------&quot;);</span>
+                                    }
+<span class="nc" id="L279">                                } else {</span>
+<span class="nc" id="L280">                                    System.out.println(&quot;No se encontraron correos que coincidan con el rango de fecha.&quot;);</span>
+                                }
+<span class="nc" id="L282">                            } catch (ParseException e) {</span>
+<span class="nc" id="L283">                                System.out.println(&quot;Error al analizar las fechas. Asegúrese de usar el formato dd/MM/yyyy.&quot;);</span>
+                            }
+<span class="nc" id="L285">                            break;</span>
+                        case 7:
+<span class="nc" id="L287">                        List&lt;Correo&gt; correosPrioritariosUCP = new ArrayList&lt;&gt;();</span>
+
+<span class="nc bnc" id="L289" title="All 2 branches missed.">                        for (Correo correo : usuarioActivo.getBandejaDeEntrada()) {</span>
+<span class="nc" id="L290">                            boolean asuntoUCP = &quot;UCP&quot;.equalsIgnoreCase(correo.getAsunto());</span>
+<span class="nc" id="L291">                            boolean remitenteUCP = correo.getRemitente().getCorreoElectronico().endsWith(&quot;@ucp.edu.ar&quot;);</span>
+                        
+<span class="nc bnc" id="L293" title="All 4 branches missed.">                            if (asuntoUCP &amp;&amp; remitenteUCP) {</span>
+<span class="nc" id="L294">                                correo.setPrioridad(&quot;ALTA&quot;);</span>
+<span class="nc bnc" id="L295" title="All 4 branches missed.">                            } else if (asuntoUCP || remitenteUCP) {</span>
+<span class="nc" id="L296">                                correo.setPrioridad(&quot;NORMAL&quot;);</span>
+                            } else {
+                                continue; // Salta los correos que no tienen ni asunto UCP ni correo UCP
+                            }
+                        
+<span class="nc" id="L301">                            correosPrioritariosUCP.add(correo);</span>
+                        }
+                        
+<span class="nc bnc" id="L304" title="All 2 branches missed.">                        if (!correosPrioritariosUCP.isEmpty()) {</span>
+                            // Ordenar los correos prioritarios por prioridad (ALTA primero)
+<span class="nc" id="L306">                            correosPrioritariosUCP.sort(Comparator.comparing(Correo::getPrioridad).reversed());</span>
+                        
+<span class="nc" id="L308">                            System.out.println(&quot;Correos prioritarios relacionados con UCP:&quot;);</span>
+<span class="nc bnc" id="L309" title="All 2 branches missed.">                            for (Correo correo : correosPrioritariosUCP) {</span>
+<span class="nc" id="L310">                                System.out.println(&quot;Asunto: &quot; + correo.getAsunto());</span>
+<span class="nc" id="L311">                                System.out.println(&quot;Mensaje: &quot; + correo.getContenido());</span>
+<span class="nc" id="L312">                                System.out.println(&quot;Remitente: &quot; + &quot;Usuario: &quot; + correo.getRemitente().getUsername() + &quot; &quot; + &quot;Nombre: &quot; + correo.getRemitente().getNombre() + &quot; &quot; + &quot;Apellido: &quot; + correo.getRemitente().getApellido() + &quot; &quot; + &quot;Correo: &quot; + correo.getRemitente().getCorreoElectronico());</span>
+<span class="nc" id="L313">                                System.out.println(&quot;Fecha: &quot; + correo.getFechaEnvio());</span>
+<span class="nc" id="L314">                                System.out.println(&quot;Prioridad: &quot; + correo.getPrioridad());</span>
+<span class="nc" id="L315">                                System.out.println(&quot;------------&quot;);</span>
+                            }
+<span class="nc" id="L317">                        } else {</span>
+<span class="nc" id="L318">                            System.out.println(&quot;No se encontraron correos prioritarios relacionados con UCP.&quot;);</span>
+                        }
+<span class="nc" id="L320">                        break;</span>
+                        case 8:
+<span class="nc" id="L322">                            System.out.println(&quot;Los siguientes correos han sido marcados como spam:&quot;);</span>
+<span class="nc" id="L323">                            List&lt;Correo&gt; correosMarcadosComoSpam = new ArrayList&lt;&gt;();</span>
+                        
+<span class="nc bnc" id="L325" title="All 2 branches missed.">                            for (Correo correo : usuarioActivo.getBandejaDeEntrada()) {</span>
+<span class="nc" id="L326">                                String remitenteNombre = correo.getRemitente().getNombre();</span>
+<span class="nc" id="L327">                                String remitenteCorreo = correo.getRemitente().getCorreoElectronico();</span>
+                        
+<span class="nc bnc" id="L329" title="All 4 branches missed.">                                if (&quot;Mercado Libre&quot;.equalsIgnoreCase(remitenteNombre) || &quot;MercadoLibre@example.com&quot;.equalsIgnoreCase(remitenteCorreo)) {</span>
+<span class="nc" id="L330">                                    filtroSpam.marcarComoSpam(correo); // Marcar el correo como spam</span>
+<span class="nc" id="L331">                                    correosMarcadosComoSpam.add(correo);</span>
+                        
+<span class="nc" id="L333">                                    System.out.println(&quot;--------------------------&quot;);</span>
+<span class="nc" id="L334">                                    System.out.println(&quot;Asunto: &quot; + correo.getAsunto());</span>
+<span class="nc" id="L335">                                    System.out.println(&quot;Contenido: &quot; + correo.getContenido());</span>
+<span class="nc" id="L336">                                    System.out.println(&quot;Remitente: &quot; + correo.getRemitente().getNombre());</span>
+<span class="nc" id="L337">                                    System.out.println(&quot;---------------------------&quot;);</span>
+                                }
+                            }
+                        
+<span class="nc bnc" id="L341" title="All 2 branches missed.">                            if (correosMarcadosComoSpam.isEmpty()) {</span>
+<span class="nc" id="L342">                                System.out.println(&quot;No se encontraron correos marcados spam.&quot;);</span>
+                            }
+<span class="nc" id="L344">                            break;</span>
+                        case 9:
+<span class="nc" id="L346">                            System.out.println(&quot;Cerrando sesión de &quot; + usuarioActivo.getUsername() + &quot;.&quot;);</span>
+<span class="nc" id="L347">                            break;</span>
+                        default:
+<span class="nc" id="L349">                            System.out.println(&quot;Opción no válida.&quot;);</span>
+                    }
+
+<span class="nc bnc" id="L352" title="All 2 branches missed.">                    if (opcionUsuario == 9) {</span>
+                        break; // Salir del bucle interno y volver al menú principal
+                    }
+                }
+            }
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.9.202303310957</span></div></body></html>

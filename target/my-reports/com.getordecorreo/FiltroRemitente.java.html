@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>FiltroRemitente.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">email</a> &gt; <a href="index.source.html" class="el_package">com.getordecorreo</a> &gt; <span class="el_source">FiltroRemitente.java</span></div><h1>FiltroRemitente.java</h1><pre class="source lang-java linenums">package com.getordecorreo;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class FiltroRemitente {
+
+    private String valorBusqueda;
+
+<span class="fc" id="L10">    public FiltroRemitente(String valorBusqueda) {</span>
+<span class="fc" id="L11">        this.valorBusqueda = valorBusqueda.toLowerCase(); // Convertir el valor de búsqueda a minúsculas para hacer coincidencias insensibles a mayúsculas y minúsculas</span>
+<span class="fc" id="L12">    }</span>
+
+    public List&lt;Correo&gt; aplicarFiltro(List&lt;Correo&gt; correos) {
+<span class="fc" id="L15">    List&lt;Correo&gt; correosFiltrados = new ArrayList&lt;&gt;();</span>
+
+<span class="pc bpc" id="L17" title="1 of 2 branches missed.">        if (correos != null) {</span>
+<span class="fc bfc" id="L18" title="All 2 branches covered.">        for (Correo correo : correos) {</span>
+            // Verificar si el valor de búsqueda coincide con el correo electrónico, nombre, apellido o usuario del remitente
+<span class="fc" id="L20">            String remitenteUsuario = correo.getRemitente().getUsername().toLowerCase();</span>
+<span class="fc" id="L21">            String remitenteNombre = correo.getRemitente().getNombre().toLowerCase();</span>
+<span class="fc" id="L22">            String remitenteApellido = correo.getRemitente().getApellido().toLowerCase();</span>
+<span class="fc" id="L23">            String remitenteCorreo = correo.getRemitente().getCorreoElectronico().toLowerCase();</span>
+            
+<span class="pc bpc" id="L25" title="3 of 8 branches missed.">            if (remitenteUsuario.contains(valorBusqueda) || remitenteCorreo.contains(valorBusqueda) || remitenteNombre.contains(valorBusqueda) || remitenteApellido.contains(valorBusqueda)) {</span>
+<span class="fc" id="L26">                correosFiltrados.add(correo);</span>
+            }
+<span class="fc" id="L28">        }</span>
+        }
+
+<span class="fc" id="L31">        return correosFiltrados;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.9.202303310957</span></div></body></html>

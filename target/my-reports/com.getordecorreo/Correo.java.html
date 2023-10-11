@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Correo.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">email</a> &gt; <a href="index.source.html" class="el_package">com.getordecorreo</a> &gt; <span class="el_source">Correo.java</span></div><h1>Correo.java</h1><pre class="source lang-java linenums">package com.getordecorreo;
+
+import java.util.List;
+import java.util.Date;
+
+public class Correo {
+    private Usuario remitente;
+    private List&lt;Contacto&gt; destinatarios;
+    private String asunto;
+    private String contenido;
+   private Date fechaEnvio;
+   private String prioridad;
+
+<span class="fc" id="L14">    public Correo(Usuario remitente, List&lt;Contacto&gt; destinatarios, String asunto, String contenido, Date fechaEnvio) {</span>
+<span class="fc" id="L15">        this.remitente = remitente;</span>
+<span class="fc" id="L16">        this.destinatarios = destinatarios;</span>
+<span class="fc" id="L17">        this.asunto = asunto;</span>
+<span class="fc" id="L18">        this.contenido = contenido;</span>
+<span class="fc" id="L19">        this.fechaEnvio = fechaEnvio;</span>
+<span class="fc" id="L20">    }</span>
+
+    public Usuario getRemitente() {
+<span class="fc" id="L23">        return remitente;</span>
+    }
+
+    public List&lt;Contacto&gt; getDestinatarios() {
+<span class="fc" id="L27">        return destinatarios;</span>
+    }
+
+    public String getAsunto() {
+<span class="fc" id="L31">        return asunto;</span>
+    }
+
+    public String getContenido() {
+<span class="fc" id="L35">        return contenido;</span>
+    }
+
+    public Date getFechaEnvio(){
+<span class="fc" id="L39">        return fechaEnvio;</span>
+    }
+
+    public void setPrioridad(String prioridad) {
+<span class="fc" id="L43">        this.prioridad = prioridad;</span>
+<span class="fc" id="L44">    }</span>
+
+    public String getPrioridad(){
+<span class="fc" id="L47">        return prioridad;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.9.202303310957</span></div></body></html>

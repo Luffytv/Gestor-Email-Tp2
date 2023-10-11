@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>FiltroUCPPrioridad.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">email</a> &gt; <a href="index.source.html" class="el_package">com.getordecorreo</a> &gt; <span class="el_source">FiltroUCPPrioridad.java</span></div><h1>FiltroUCPPrioridad.java</h1><pre class="source lang-java linenums">package com.getordecorreo;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+<span class="nc" id="L6">public class FiltroUCPPrioridad {</span>
+    public static List&lt;Correo&gt; filtrarYPriorizarUCP(List&lt;Correo&gt; correos) {
+        // Filtrar correos que tengan asunto &quot;UCP&quot; o remitente con correo @ucp.edu.ar
+<span class="fc" id="L9">        List&lt;Correo&gt; correosFiltrados = correos.stream()</span>
+<span class="fc" id="L10">            .filter(correo -&gt;</span>
+<span class="fc bfc" id="L11" title="All 2 branches covered.">                &quot;UCP&quot;.equalsIgnoreCase(correo.getAsunto()) ||</span>
+<span class="pc bpc" id="L12" title="1 of 2 branches missed.">                correo.getRemitente().getCorreoElectronico().endsWith(&quot;@ucp.edu.ar&quot;))</span>
+<span class="fc" id="L13">            .collect(Collectors.toList());</span>
+
+        // Asignar prioridad ALTA a los correos que cumplen ambos criterios
+<span class="fc bfc" id="L16" title="All 2 branches covered.">        for (Correo correo : correosFiltrados) {</span>
+<span class="pc bpc" id="L17" title="1 of 2 branches missed.">            if (&quot;UCP&quot;.equalsIgnoreCase(correo.getAsunto()) &amp;&amp;</span>
+<span class="fc bfc" id="L18" title="All 2 branches covered.">                correo.getRemitente().getCorreoElectronico().endsWith(&quot;@ucp.edu.ar&quot;)) {</span>
+<span class="fc" id="L19">                correo.setPrioridad(&quot;ALTA&quot;);</span>
+            } else {
+<span class="fc" id="L21">                correo.setPrioridad(&quot;NORMAL&quot;);</span>
+            }
+<span class="fc" id="L23">        }</span>
+
+<span class="fc" id="L25">        return correosFiltrados;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.9.202303310957</span></div></body></html>
